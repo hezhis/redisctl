@@ -14,7 +14,7 @@ var (
 	KeyIsEmpty  = errors.New("key is empty")
 )
 
-func Set(client *redis.Client, key string, value interface{}, expire, timeout time.Duration) error {
+func Set(client redis.Cmdable, key string, value interface{}, expire, timeout time.Duration) error {
 	if client == nil {
 		return ClientIsNil
 	}
@@ -34,7 +34,7 @@ func Set(client *redis.Client, key string, value interface{}, expire, timeout ti
 	return err
 }
 
-func HSet(client *redis.Client, key string, field string, value interface{}, timeout time.Duration) error {
+func HSet(client redis.Cmdable, key string, field string, value interface{}, timeout time.Duration) error {
 	if client == nil {
 		return ClientIsNil
 	}
